@@ -1,16 +1,10 @@
 const express = require("express");
-const fs = require("fs");
-const port = 9000;
 const app = express();
 
+// Define a route
 app.get('/', (req, res) => {
-    res.json({"message": "i am ok"});
+    res.json({"message": "I am OK"});
 });
 
-app.listen(port, () => {
-
-    console.log(`Server is running on http://localhost:${port}`);
-
-
-});
-
+// Export the app to work with Vercel
+module.exports = app;
