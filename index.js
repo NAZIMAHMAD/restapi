@@ -1,10 +1,8 @@
-const express = require('express');
-const app = express();
 const path = require('path');
 const fs = require('fs');
 
-// Define the route to serve the user data
-app.get('/user/user.json', (req, res) => {
+// Define the serverless function to serve the user data
+module.exports = (req, res) => {
   const filePath = path.join(__dirname, './user/user.json');  // Adjust path to user.json
 
   // Read the contents of user.json
@@ -17,11 +15,7 @@ app.get('/user/user.json', (req, res) => {
 
     // Parse and send the data as a JSON response
     const userData = JSON.parse(data);
-    res.json({ message: "I am OK", user: userData });
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(userData); // Directly send user data without extra message
   });
-});
-
-// Export the express app to be used by Vercel
-module.exports = (req, res) => {
-  app(req, res);
 };
