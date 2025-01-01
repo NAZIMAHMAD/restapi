@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Define the route to serve the user data
-app.get('/user', (req, res) => {
+app.get('/user/user.json', (req, res) => {
   const filePath = path.join(__dirname, './user/user.json');  // Adjust path to user.json
 
   // Read the contents of user.json
